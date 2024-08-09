@@ -4,22 +4,20 @@ using UnityEngine;
 
 public class InputPlayer : MonoBehaviour
 {
-    private float horizontal;
-    private bool jumpInput;
-
-    public bool JumpInput
-    {
-        get => jumpInput;
-    }
-    public float Horizontal
-    {
-        get => horizontal;
-    }
-
+    public bool JumpInputClick { get; private set; }
+    public float Horizontal { get; private set; }
+    public bool canJump { get; set; }
 
     private void Update()
     {
-        horizontal = Input.GetAxis("Horizontal");
-        jumpInput = Input.GetKeyDown(KeyCode.Space);
+        Horizontal = Input.GetAxis("Horizontal");
+
+        JumpInputClick = Input.GetKeyDown(KeyCode.UpArrow);
+
+        if (Input.GetKeyUp(KeyCode.UpArrow))
+        {
+            canJump = false;
+        }
+
     }
 }

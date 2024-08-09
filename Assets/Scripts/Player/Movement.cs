@@ -4,33 +4,58 @@ using UnityEngine;
 
 public class Movement : MonoBehaviour
 {
-    public InputPlayer inputPlayer;
-    public GroundCheck groundCheck;
-    public Rigidbody2D rb;
+    private InputPlayer input;
 
-    public float speedMove;
-    public float jumpForce;
+    [SerializeField] private GroundCheck groundCheck;
 
-    private void Update()
+    private Rigidbody2D rb;
+
+    [SerializeField] private DataPlayer data;
+
+
+    private float yInit;
+
+    private void Awake()
     {
-        if (inputPlayer.JumpInput && groundCheck.IsGrounded)
+        rb = GetComponent<Rigidbody2D>();
+        input = GetComponent<InputPlayer>();
+    }
+
+    void Update()
+    {
+        CheckInputJump();
+    }
+
+    void FixedUpdate()
+    {
+        Move();
+        Jump();
+    }
+
+    private void CheckInputJump()
+    {
+        if (input.JumpInputClick && groundCheck.IsGrounded)
         {
-            Jump();
+            input.canJump = true;
+            yInit = transform.position.y;
+        }
+
+        float curHight = transform.position.y - yInit;
+        if (curHight > data.maxJump)
+        {
+            input.canJump = false;
         }
     }
 
-    private void FixedUpdate()
-    {
-        Move();
-    }
     private void Move()
     {
-        Vector2 direction = new Vector2(inputPlayer.Horizontal * speedMove, rb.velocity.y);
-        rb.velocity = direction;
+        rb.velocity = new Vector2(input.Horizontal * data.speedMove, rb.velocity.y);
     }
     private void Jump()
     {
-        rb.AddForce(Vector2.up * jumpForce);
-        groundCheck.IsGrounded = false;
+        if(input.canJump)
+        {
+            rb.velocity = new Vector2(rb.velocity.x, data.jumpForce);
+        }
     }
 }

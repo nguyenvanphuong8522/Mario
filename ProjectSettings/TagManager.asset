@@ -5,14 +5,16 @@ TagManager:
   serializedVersion: 2
   tags:
   - Ground
+  - Swap
+  - Enemy
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Dead
   - Water
   - UI
-  - 
+  - Player
   - 
   - 
   - 

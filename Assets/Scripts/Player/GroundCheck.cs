@@ -5,7 +5,6 @@ using UnityEngine;
 public class GroundCheck : MonoBehaviour
 {
     private bool isGrouned;
-
     public bool IsGrounded
     {
         get => isGrouned;
@@ -15,13 +14,14 @@ public class GroundCheck : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnTriggerStay2D(Collider2D collision)
     {
         if (collision.CompareTag("Ground"))
         {
             isGrouned = true;
         }
     }
+
     private void OnTriggerExit2D(Collider2D collision)
     {
         if (collision.CompareTag("Ground"))
