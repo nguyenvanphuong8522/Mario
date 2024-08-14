@@ -58,4 +58,10 @@ public class Movement : MonoBehaviour
             rb.velocity = new Vector2(rb.velocity.x, data.jumpForce);
         }
     }
+
+    private void OnCollisionEnter2D(Collision2D col)
+    {
+        if (col.GetContact(0).normal == Vector2.down) 
+            input.canJump = false;
+    }
 }

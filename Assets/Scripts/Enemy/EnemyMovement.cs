@@ -1,22 +1,38 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))]
-
 public class EnemyMovement : MonoBehaviour
 {
     private Rigidbody2D rb;
 
-    [SerializeField] private Collider2D collider;
-
-    [SerializeField] private BoxCollider2D boxCollider;
-
-    [SerializeField] private Vector2 direction = Vector2.left;
+    private Vector2 direction;
 
     [SerializeField] private float speed;
 
+    [SerializeField] private EnemyController e_Controller;
+
+    private void Awake()
+    {
+        rb = GetComponent<Rigidbody2D>();
+    }
+
+    private void Start()
+    {
+        direction = Vector2.left;
+    }
+
+    private void OnEnable()
+    {
+        e_Controller.OnStateChange += ChangeState;
+    }
+
+    private void OnDisable()
+    {
+        e_Controller.OnStateChange -= ChangeState;
+    }
 
     private void FixedUpdate()
     {
@@ -24,21 +40,46 @@ public class EnemyMovement : MonoBehaviour
     }
     private void Move()
     {
-        rb.velocity = new Vector2(direction.x, rb.velocity.y);
+        rb.velocity = new Vector2(direction.x * speed, rb.velocity.y);
     }
 
-    private void OnValidate()
-    {
-        rb = GetComponent<Rigidbody2D>();
-        collider = GetComponent<Collider2D>();
-    }
 
     private void OnTriggerEnter2D(Collider2D col)
     {
-        if (col.CompareTag("Swap") || col.CompareTag("Ground") || col.CompareTag("Enemy"))
+        if (col.CompareTag("Swap") || col.CompareTag("Ground"))
         {
-            direction *= -1;
+            e_Controller.ChangeState(EnemyState.idle);
+            StartCoroutine(DelayChangeDirection(3));
         }
+        else if (col.CompareTag("Enemy"))
+        {
+            StartCoroutine(DelayChangeDirection(0));
+        }
+    }
+
+    private IEnumerator DelayChangeDirection(float duration)
+    {
+        yield return new WaitForSeconds(duration);
+        e_Controller.ChangeState(EnemyState.run);
+        direction *= -1;
+    }
+
+    public void ChangeState(EnemyState state)
+    {
+        switch (state)
+        {
+            case EnemyState.run:
+                speed = 2;
+                break;
+            default:
+                speed = 0;
+                break;
+        }
+    }
+
+
+    private void OnCollisionEnter2D(Collision2D col)
+    {
     }
 
 }

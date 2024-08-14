@@ -7,6 +7,7 @@ public class FlipFace : MonoBehaviour
 {
     [SerializeField] private Rigidbody2D rbPlayer;
 
+    [SerializeField] private SpriteRenderer spriteRenderer;
     void Update()
     {
         Flip();
@@ -14,12 +15,14 @@ public class FlipFace : MonoBehaviour
     public void Flip()
     {
         float hor = rbPlayer.velocity.x;
-        if (hor == 0) return;
-
-        Vector3 curScale = transform.localScale;
-        float x = Mathf.Abs(curScale.x);
-
-        curScale.x = hor < 0 ? -x : x;
-        transform.localScale = curScale;
+        if (hor != 0)
+        {
+            if(hor <= 0)
+            {
+                spriteRenderer.flipX = true;
+                return;
+            }
+            spriteRenderer.flipX = false;
+        }
     }
 }
