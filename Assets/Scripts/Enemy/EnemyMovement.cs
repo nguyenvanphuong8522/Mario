@@ -43,24 +43,20 @@ public class EnemyMovement : MonoBehaviour
         rb.velocity = new Vector2(direction.x * speed, rb.velocity.y);
     }
 
-
     private void OnTriggerEnter2D(Collider2D col)
     {
         if (col.CompareTag("Swap") || col.CompareTag("Ground"))
         {
-            e_Controller.ChangeState(EnemyState.idle);
-            StartCoroutine(DelayChangeDirection(3));
+            ChangeDirection();
         }
         else if (col.CompareTag("Enemy"))
         {
-            StartCoroutine(DelayChangeDirection(0));
+            ChangeDirection();
         }
     }
 
-    private IEnumerator DelayChangeDirection(float duration)
+    private void ChangeDirection()
     {
-        yield return new WaitForSeconds(duration);
-        e_Controller.ChangeState(EnemyState.run);
         direction *= -1;
     }
 
@@ -71,15 +67,12 @@ public class EnemyMovement : MonoBehaviour
             case EnemyState.run:
                 speed = 2;
                 break;
+            case EnemyState.die:
+                speed = 0;
+                break;
             default:
                 speed = 0;
                 break;
         }
     }
-
-
-    private void OnCollisionEnter2D(Collision2D col)
-    {
-    }
-
 }

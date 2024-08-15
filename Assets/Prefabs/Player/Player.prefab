@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 4914048000596033679}
   - component: {fileID: 4114154224175294706}
   - component: {fileID: 2148842256907033902}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -174,6 +174,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 80b25fbf2664c1d4cbfa0b8ac07fb07c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  state: 0
+  input: {fileID: 947764784818284272}
+  groundCheck: {fileID: 6222601291560120605}
 --- !u!1 &5603869454349501284
 GameObject:
   m_ObjectHideFlags: 0
@@ -185,7 +188,7 @@ GameObject:
   - component: {fileID: 4093313261206460460}
   - component: {fileID: 2158524713422412261}
   - component: {fileID: 6222601291560120605}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: groundCheck
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -277,7 +280,7 @@ GameObject:
   - component: {fileID: 8560509480763158487}
   - component: {fileID: 4499818961619159792}
   - component: {fileID: 1938742881760944251}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -398,5 +401,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f3a1184df5091c4a88b6d4d3e442f3d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  groundCheck: {fileID: 6222601291560120605}
-  input: {fileID: 947764784818284272}

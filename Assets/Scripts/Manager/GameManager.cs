@@ -5,16 +5,33 @@ using UnityEngine;
 
 public enum GameState
 {
-    SETUP,
+    MENU,
     STARTED,
     PAUSE,
     GAMEOVER
 }
 public class GameManager : MonoBehaviour
 {
+    public static GameManager instance;
     public event Action<GameState> OnStateChanged;
 
-    public GameState curState = GameState.SETUP;
+    public GameState curState = GameState.MENU;
+
+    public LevelManager levelManager;
+
+    private void Awake()
+    {
+        if(instance == null)
+        {
+            instance = this;
+        }
+        else
+        {
+            Destroy(instance);
+        }
+        DontDestroyOnLoad(gameObject);
+        levelManager = Instantiate(levelManager);
+    }
 
     public void ChangeState(GameState state)
     {
