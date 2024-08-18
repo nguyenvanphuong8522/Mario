@@ -85,6 +85,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 6822447495920504279}
+  remain: 3
 --- !u!1 &6891421309480058533 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7130490771368030872, guid: 3b0859f007d1980459a58e68390ce0fc, type: 3}

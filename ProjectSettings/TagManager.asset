@@ -45,11 +45,11 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
-  - name: Player
-    uniqueID: 33379475
-    locked: 0
   - name: Background
     uniqueID: 825386911
+    locked: 0
+  - name: Player
+    uniqueID: 33379475
     locked: 0
   - name: UI
     uniqueID: 1988954395

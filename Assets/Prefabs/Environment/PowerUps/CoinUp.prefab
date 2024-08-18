@@ -16,6 +16,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: CoinUp
       objectReference: {fileID: 0}
+    - target: {fileID: 4755161404894500570, guid: 9656d063b91ac654dbcb7cab04011c01, type: 3}
+      propertyPath: m_SortingLayer
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4755161404894500570, guid: 9656d063b91ac654dbcb7cab04011c01, type: 3}
+      propertyPath: m_SortingLayerID
+      value: 33379475
+      objectReference: {fileID: 0}
     - target: {fileID: 4886518169917541337, guid: 9656d063b91ac654dbcb7cab04011c01, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -59,5 +67,25 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 3774155530581233369, guid: 9656d063b91ac654dbcb7cab04011c01, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: -9095013505042431512}
   m_SourcePrefab: {fileID: 100100000, guid: 9656d063b91ac654dbcb7cab04011c01, type: 3}
+--- !u!1 &6650457599597741523 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3774155530581233369, guid: 9656d063b91ac654dbcb7cab04011c01, type: 3}
+  m_PrefabInstance: {fileID: 7506187241959246602}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &-9095013505042431512
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6650457599597741523}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 393fc64a96088214f83eaf9fbb367b5e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

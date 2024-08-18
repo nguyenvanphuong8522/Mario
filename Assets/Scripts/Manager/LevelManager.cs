@@ -15,5 +15,6 @@ public class LevelManager : MonoBehaviour
         Camera.main.GetComponent<CameraFollow>().SetUp(player);
         Destroy(curLevel);
         curLevel = Instantiate(levels[index]);
+        GameManager.instance.ChangeState(GameState.STARTED);
     }
 }

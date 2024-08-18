@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5538269024301601080}
   - component: {fileID: 7270933059679741466}
+  - component: {fileID: 7175794595107056080}
   m_Layer: 0
   m_Name: LevelManager
   m_TagString: Untagged
@@ -48,3 +49,17 @@ MonoBehaviour:
   - {fileID: 8337711460625483764, guid: f15e5698823b37e4a9f9f15e7123f6a8, type: 3}
   playerPrefab: {fileID: 2148842256907033902, guid: 4c655cecd0e3876478831334b7d87c8b, type: 3}
   curLevel: {fileID: 0}
+--- !u!114 &7175794595107056080
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4061859621803843337}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aeeccfab521c48444acd2d69a03d818d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  powerUps:
+  - {fileID: -9095013505042431512, guid: 7138144a7b77b7147b66f70ed01e0aa2, type: 3}

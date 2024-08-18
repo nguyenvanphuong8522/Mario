@@ -14,7 +14,6 @@ public class Movement : MonoBehaviour
 
     [SerializeField] private DataPlayer data;
 
-
     private float yInit;
 
     private Coroutine coroutineSetDie;
@@ -92,13 +91,5 @@ public class Movement : MonoBehaviour
     {
         if (col.GetContact(0).normal == Vector2.down) 
             input.canJump = false;
-    }
-
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.CompareTag("Enemy"))
-        {
-            Debug.Log("die");
-        }
     }
 }

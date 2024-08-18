@@ -1,18 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class PanelStarted : BasePopup
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    [SerializeField] private TextMeshProUGUI txtCoin;
 
-    // Update is called once per frame
-    void Update()
+    public void UpdateTxtCoin(string value)
     {
-        
+        txtCoin.SetText(value);
     }
 }

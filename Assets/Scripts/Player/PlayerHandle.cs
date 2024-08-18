@@ -36,7 +36,7 @@ public class PlayerHandle : MonoBehaviour
             }
         }
 
-        min.GetComponent<IBoxRespond>().Respond();
+        min.GetComponent<BoxBase>().Respond();
         boxesTransform.Clear();
     }
 

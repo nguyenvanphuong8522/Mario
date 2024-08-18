@@ -31,6 +31,12 @@ public class GameManager : MonoBehaviour
         }
         DontDestroyOnLoad(gameObject);
         levelManager = Instantiate(levelManager);
+    
+    }
+
+    public void UpdateCoinPlayer(int value)
+    {
+        levelManager.player.IncreaseCoin(value);
     }
 
     public void ChangeState(GameState state)

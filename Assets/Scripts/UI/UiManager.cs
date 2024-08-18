@@ -6,7 +6,8 @@ public class UiManager : MonoBehaviour
 {
     public static UiManager instance;
 
-    [SerializeField] private BasePopup panelStarted;
+    public PanelStarted panelStarted;
+
     [SerializeField] private BasePopup panelGameOver;
     [SerializeField] private BasePopup panelMenu;
 
@@ -37,7 +38,11 @@ public class UiManager : MonoBehaviour
         switch(state)
         {
             case GameState.MENU:
+                panelStarted.Hide();
                 panelMenu.Show();
+                break;
+            case GameState.STARTED:
+                panelStarted.Show();
                 break;
             case GameState.GAMEOVER:
                 panelGameOver.Show();
@@ -45,5 +50,8 @@ public class UiManager : MonoBehaviour
         }
     }
 
-
+    public void UpdateTxtCoin(string value)
+    {
+        panelStarted.UpdateTxtCoin($"Coin: {value}");
+    }
 }

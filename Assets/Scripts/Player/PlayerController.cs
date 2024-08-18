@@ -21,6 +21,8 @@ public class PlayerController : MonoBehaviour
 
     private Movement movement;
 
+    private int coin;
+
     private void Awake()
     {
         movement = GetComponent<Movement>();
@@ -42,7 +44,6 @@ public class PlayerController : MonoBehaviour
         }
             
     }
-
     void Update()
     {
         if (state == PlayerState.DIE) return;
@@ -59,5 +60,11 @@ public class PlayerController : MonoBehaviour
         }
 
         ChangeState(PlayerState.RUN);
+    }
+
+    public void IncreaseCoin(int value)
+    {
+        coin += value;
+        UiManager.instance.UpdateTxtCoin(coin.ToString());
     }
 }
