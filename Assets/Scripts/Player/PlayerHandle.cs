@@ -36,6 +36,17 @@ public class PlayerHandle : MonoBehaviour
             }
         }
 
+        if(GetComponent<PlayerController>() != null)
+        {
+            if(GetComponent<PlayerController>().powerUpsReceived.Contains(PowerUpType.SIZE)) {
+                if(min.GetComponent<BoxRaw>() != null)
+                {
+                    min.GetComponent<BoxRaw>().Break();
+                    boxesTransform.Clear();
+                    return;
+                }
+            }
+        }
         min.GetComponent<BoxBase>().Respond();
         boxesTransform.Clear();
     }

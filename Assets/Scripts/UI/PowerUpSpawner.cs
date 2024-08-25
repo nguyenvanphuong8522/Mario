@@ -15,6 +15,8 @@ public class PowerUpSpawner : MonoBehaviour
 
     public PowerUpBase[] powerUps;
 
+    public GameObject breakEffect;
+
     private void Awake()
     {
         instance = this;
@@ -37,5 +39,13 @@ public class PowerUpSpawner : MonoBehaviour
                 break;
         }
         return Instantiate(powerUps[index], pos, Quaternion.identity);
+    }
+
+    public GameObject SpawnEffectBreak(Vector3 pos)
+    {
+        AudioManager.instance.Play(AudioManager.instance.listClip[4]);
+        GameObject effect =  Instantiate(breakEffect, pos, Quaternion.identity);
+        Destroy(effect, 2);
+        return effect;
     }
 }

@@ -6,7 +6,7 @@ public abstract class BoxBase: MonoBehaviour
 {
     public abstract void Respond();
 
-    private void OnCollisionEnter2D(Collision2D col)
+    protected virtual void OnCollisionEnter2D(Collision2D col)
     {
         if (col.gameObject.CompareTag("Player") && col.transform.position.y > transform.position.y)
         {

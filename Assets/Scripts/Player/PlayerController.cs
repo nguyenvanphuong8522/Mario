@@ -91,6 +91,7 @@ public class PlayerController : MonoBehaviour
     public void SizeUp()
     {
         if (powerUpsReceived.Contains(PowerUpType.SIZE)) return;
+        AudioManager.instance.Play(AudioManager.instance.listClip[5]);
         transform.localScale = Vector3.one * 2;
         Vector3 curPos = transform.position;
         curPos.y += box.size.y / 2;
@@ -104,6 +105,7 @@ public class PlayerController : MonoBehaviour
     public void SizeDown()
     {
         if (!powerUpsReceived.Contains(PowerUpType.SIZE)) return;
+        AudioManager.instance.Play(AudioManager.instance.listClip[6]);
         transform.localScale = Vector3.one;
         Vector3 curPos = transform.position;
         curPos.y -= box.size.y / 2;

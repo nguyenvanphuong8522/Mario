@@ -63,3 +63,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   powerUps:
   - {fileID: -9095013505042431512, guid: 7138144a7b77b7147b66f70ed01e0aa2, type: 3}
+  breakEffect: {fileID: 8294296220784985141, guid: d81a5a6551e23a648bc8da93c1f00748, type: 3}
