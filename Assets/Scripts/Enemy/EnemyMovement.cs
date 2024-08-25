@@ -6,7 +6,7 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody2D))]
 public class EnemyMovement : MonoBehaviour
 {
-    private Rigidbody2D rb;
+    internal Rigidbody2D rb;
 
     private Vector2 direction;
 
@@ -68,6 +68,9 @@ public class EnemyMovement : MonoBehaviour
                 speed = 2;
                 break;
             case EnemyState.die:
+                speed = 0;
+                break;
+            case EnemyState.diefall:
                 speed = 0;
                 break;
             default:

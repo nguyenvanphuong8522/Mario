@@ -12,5 +12,6 @@ public class PowerUpCoin : PowerUpBase
     protected override void ApplyPowerUp()
     {
         GameManager.instance.UpdateCoinPlayer(1);
+        AudioManager.instance.Play(AudioManager.instance.listClip[0]);
     }
 }

@@ -39,6 +39,4 @@ public class PlayerHandle : MonoBehaviour
         min.GetComponent<BoxBase>().Respond();
         boxesTransform.Clear();
     }
-
-
 }

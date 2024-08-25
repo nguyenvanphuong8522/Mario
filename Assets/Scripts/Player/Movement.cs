@@ -8,7 +8,7 @@ public class Movement : MonoBehaviour
 
     [SerializeField] private GroundCheck groundCheck;
 
-    private Rigidbody2D rb;
+    internal Rigidbody2D rb;
 
     private PlayerController p_controller;
 
@@ -32,11 +32,8 @@ public class Movement : MonoBehaviour
 
     void FixedUpdate()
     {
-        if(p_controller.state != PlayerState.DIE)
-        {
-            Move();
-            Jump();
-        }
+        Move();
+        Jump();
     }
 
     private void CheckInputJump()
@@ -76,11 +73,13 @@ public class Movement : MonoBehaviour
 
     public IEnumerator SetDie()
     {
+        AudioManager.instance.Play(AudioManager.instance.listClip[2]);
         rb.simulated = false;
         int layerDead = LayerMask.NameToLayer("Dead");
         gameObject.layer = layerDead;
-        yield return new WaitForSeconds(.8f);
+        yield return new WaitForSeconds(.2f);
         rb.simulated = true;
+        rb.velocity = Vector2.zero;
         rb.AddForce(Vector2.up * 13, ForceMode2D.Impulse);
         yield return new WaitForSeconds(.8f);
         GameManager.instance.ChangeState(GameState.GAMEOVER);

@@ -25,7 +25,7 @@ public abstract class BoxBase: MonoBehaviour
         {
             if (col.gameObject.CompareTag("Enemy"))
             {
-                col.GetComponent<EnemyController>().Die();
+                col.GetComponent<EnemyController>().DieFall();
             }
         }
     }

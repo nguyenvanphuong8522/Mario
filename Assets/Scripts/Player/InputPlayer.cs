@@ -8,8 +8,11 @@ public class InputPlayer : MonoBehaviour
     public float Horizontal { get; private set; }
     public bool canJump { get; set; }
 
+    private bool canControl;
+
     private void Update()
     {
+        if (!canControl) return;
         Horizontal = Input.GetAxis("Horizontal");
 
         JumpInputClick = Input.GetKeyDown(KeyCode.UpArrow);
@@ -18,6 +21,20 @@ public class InputPlayer : MonoBehaviour
         {
             canJump = false;
         }
+
+    }
+
+    public void DisableControl()
+    {
+        canControl = false;
+        Horizontal = 0;
+        JumpInputClick = false;
+        canJump = false;
+    }
+
+    public void EnableControl()
+    {
+        canControl = true;
 
     }
 }

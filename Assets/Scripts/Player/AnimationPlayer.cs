@@ -27,12 +27,22 @@ public class AnimationPlayer : MonoBehaviour
         p_Controller.OnStateChange -= ChangeState;
     }
 
-    private void Play(string name)
+    public void Play(string name)
     {
         if (curAnimation != name)
         {
             animator.Play(name);
         }
+    }
+
+    public void SetLayer(int value)
+    {
+        animator.SetLayerWeight(1, value);
+    }
+
+    public float GetWeight()
+    {
+        return animator.GetLayerWeight(1);
     }
 
     private void ChangeState(PlayerState state)
@@ -47,6 +57,9 @@ public class AnimationPlayer : MonoBehaviour
                 break;
             case PlayerState.JUMP:
                 Play("Jump");
+                break; 
+            case PlayerState.FREEZE:
+                //Play("sizeUp");
                 break; 
             case PlayerState.DIE:
                 Play("Die");

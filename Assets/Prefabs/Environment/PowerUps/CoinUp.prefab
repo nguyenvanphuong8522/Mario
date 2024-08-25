@@ -17,12 +17,20 @@ PrefabInstance:
       value: CoinUp
       objectReference: {fileID: 0}
     - target: {fileID: 4755161404894500570, guid: 9656d063b91ac654dbcb7cab04011c01, type: 3}
+      propertyPath: m_Size.x
+      value: 0.475
+      objectReference: {fileID: 0}
+    - target: {fileID: 4755161404894500570, guid: 9656d063b91ac654dbcb7cab04011c01, type: 3}
+      propertyPath: m_Size.y
+      value: 0.515
+      objectReference: {fileID: 0}
+    - target: {fileID: 4755161404894500570, guid: 9656d063b91ac654dbcb7cab04011c01, type: 3}
       propertyPath: m_SortingLayer
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4755161404894500570, guid: 9656d063b91ac654dbcb7cab04011c01, type: 3}
       propertyPath: m_SortingLayerID
-      value: 33379475
+      value: 825386911
       objectReference: {fileID: 0}
     - target: {fileID: 4886518169917541337, guid: 9656d063b91ac654dbcb7cab04011c01, type: 3}
       propertyPath: m_LocalPosition.x
@@ -63,6 +71,22 @@ PrefabInstance:
     - target: {fileID: 4886518169917541337, guid: 9656d063b91ac654dbcb7cab04011c01, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6114676402445355787, guid: 9656d063b91ac654dbcb7cab04011c01, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6114676402445355787, guid: 9656d063b91ac654dbcb7cab04011c01, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6114676402445355787, guid: 9656d063b91ac654dbcb7cab04011c01, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6114676402445355787, guid: 9656d063b91ac654dbcb7cab04011c01, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

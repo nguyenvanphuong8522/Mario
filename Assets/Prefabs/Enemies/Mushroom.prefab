@@ -33,6 +33,18 @@ PrefabInstance:
       value: Mushroom
       objectReference: {fileID: 0}
     - target: {fileID: 6316371457790744126, guid: fb4f6e2661666d043b74d82b75c6da83, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6316371457790744126, guid: fb4f6e2661666d043b74d82b75c6da83, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6316371457790744126, guid: fb4f6e2661666d043b74d82b75c6da83, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6316371457790744126, guid: fb4f6e2661666d043b74d82b75c6da83, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
@@ -70,6 +82,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6316371457790744126, guid: fb4f6e2661666d043b74d82b75c6da83, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6316371457790744126, guid: fb4f6e2661666d043b74d82b75c6da83, type: 3}
+      propertyPath: m_ConstrainProportionsScale
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7981469883162426351, guid: fb4f6e2661666d043b74d82b75c6da83, type: 3}
@@ -259,6 +275,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0a08c406af95754d89a7db0cf7acdaf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  movement: {fileID: 1255342489959706923}
 --- !u!114 &1255342489959706923
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -6,7 +6,8 @@ public enum EnemyState
 {
     idle,
     run,
-    die
+    die,
+    diefall
 }
 
 public class EnemyController : MonoBehaviour
@@ -14,6 +15,8 @@ public class EnemyController : MonoBehaviour
     public event Action<EnemyState> OnStateChange = delegate { };
 
     private EnemyState curState;
+
+    [SerializeField] private EnemyMovement movement;
 
     private void Start()
     {
@@ -41,17 +44,40 @@ public class EnemyController : MonoBehaviour
         }
     }
 
+    internal void DieFall()
+    {
+        StartCoroutine(SetDieFall());
+    }
     internal void Die()
     {
         StartCoroutine(DelayDestroy());
     }
 
+    public IEnumerator SetDieFall()
+    {
+        movement.rb.AddForce(Vector2.up * 60, ForceMode2D.Impulse);
+        ChangeState(EnemyState.diefall);
+        ChangeValueDie();
+        
+        yield return new WaitForSeconds(.8f);
+        Destroy(gameObject);
+    }
+
     private IEnumerator DelayDestroy()
     {
+        GetComponent<Rigidbody2D>().simulated = false;
+        ChangeState(EnemyState.die);
+        ChangeValueDie();
+
+        yield return new WaitForSeconds(.8f);
+        Destroy(gameObject);
+    }
+
+    private void ChangeValueDie()
+    {
+        AudioManager.instance.Play(AudioManager.instance.listClip[3]);
         int layerDead = LayerMask.NameToLayer("Dead");
         gameObject.layer = layerDead;
-        ChangeState(EnemyState.die);
-        yield return new WaitForSeconds(1f);
-        Destroy(gameObject);
+        movement.rb.velocity = Vector2.zero;
     }
 }

@@ -4,9 +4,26 @@ using UnityEngine;
 
 public class test : MonoBehaviour
 {
-    private void OnTriggerEnter2D(Collider2D collision)
+    int i;
+    private void Update()
     {
-        if(collision.CompareTag("Enemy"))
-        Debug.Log("dd");
+        if(Input.GetMouseButtonDown(0))
+        {
+            i++;
+            StartCoroutine("Test");
+        }
+        else if(Input.GetMouseButtonDown(1))
+        {
+            StopCoroutine("Test");
+        }
+    }
+
+    IEnumerator Test()
+    {
+        int val = i;
+        for (;;)
+        {
+            yield return null;
+        }
     }
 }

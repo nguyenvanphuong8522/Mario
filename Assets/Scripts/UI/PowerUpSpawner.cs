@@ -11,7 +11,6 @@ public enum PowerUpType
 
 public class PowerUpSpawner : MonoBehaviour
 {
-
     public static PowerUpSpawner instance;
 
     public PowerUpBase[] powerUps;

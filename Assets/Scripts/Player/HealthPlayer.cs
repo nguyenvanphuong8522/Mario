@@ -18,8 +18,13 @@ public class HealthPlayer : MonoBehaviour
         health--;
         if(health <= 0 )
         {
+            if(controller.powerUpsReceived.Contains(PowerUpType.SIZE))
+            {
+                controller.SizeDown();
+                return;
+            }
+            if(controller.animationPlayer.GetWeight() <= 0)
             controller.ChangeState(PlayerState.DIE);
-
         }
     }
 
