@@ -8,6 +8,8 @@ TagManager:
   - Swap
   - Enemy
   - Box
+  - PowerUp
+  - Bullet
   layers:
   - Default
   - TransparentFX

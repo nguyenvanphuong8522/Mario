@@ -12,8 +12,6 @@ public class EnemyMovement : MonoBehaviour
 
     [SerializeField] private float speed;
 
-    [SerializeField] private EnemyController e_Controller;
-
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -21,17 +19,7 @@ public class EnemyMovement : MonoBehaviour
 
     private void Start()
     {
-        direction = Vector2.left;
-    }
-
-    private void OnEnable()
-    {
-        e_Controller.OnStateChange += ChangeState;
-    }
-
-    private void OnDisable()
-    {
-        e_Controller.OnStateChange -= ChangeState;
+        direction = Vector2.right;
     }
 
     private void FixedUpdate()
@@ -49,10 +37,6 @@ public class EnemyMovement : MonoBehaviour
         {
             ChangeDirection();
         }
-        else if (col.CompareTag("Enemy"))
-        {
-            ChangeDirection();
-        }
     }
 
     private void ChangeDirection()
@@ -60,22 +44,8 @@ public class EnemyMovement : MonoBehaviour
         direction *= -1;
     }
 
-    public void ChangeState(EnemyState state)
+    public void SetSpeed(float speed)
     {
-        switch (state)
-        {
-            case EnemyState.run:
-                speed = 2;
-                break;
-            case EnemyState.die:
-                speed = 0;
-                break;
-            case EnemyState.diefall:
-                speed = 0;
-                break;
-            default:
-                speed = 0;
-                break;
-        }
+        this.speed = speed;
     }
 }

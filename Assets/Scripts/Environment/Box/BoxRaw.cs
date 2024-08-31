@@ -21,6 +21,14 @@ public class BoxRaw : BoxBase
                 transform.parent.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Static;
             }
         }
+        if (col.gameObject.CompareTag("Bullet") && col.transform.position.y > transform.position.y)
+        {
+            if (GetComponentInParent<CompositeCollider2D>() == null)
+            {
+                transform.parent.AddComponent<CompositeCollider2D>();
+                transform.parent.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Static;
+            }
+        }
     }
 
     public void Break()

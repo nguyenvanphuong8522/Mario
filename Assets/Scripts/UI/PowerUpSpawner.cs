@@ -17,6 +17,9 @@ public class PowerUpSpawner : MonoBehaviour
 
     public GameObject breakEffect;
 
+    public GameObject bullet;
+
+
     private void Awake()
     {
         instance = this;
@@ -46,6 +49,13 @@ public class PowerUpSpawner : MonoBehaviour
         AudioManager.instance.Play(AudioManager.instance.listClip[4]);
         GameObject effect =  Instantiate(breakEffect, pos, Quaternion.identity);
         Destroy(effect, 2);
+        return effect;
+    }
+    public GameObject SpawnBullet(Vector2 direction, Vector3 pos)
+    {
+         GameObject effect =  Instantiate(bullet, pos, Quaternion.identity);
+        effect.GetComponent<BulletMovement>().Direction = direction;
+        effect.GetComponent<BulletMovement>().Movement();
         return effect;
     }
 }

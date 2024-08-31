@@ -7,6 +7,8 @@ public class PlayerHandle : MonoBehaviour
 {
     private List<Transform> boxesTransform = new List<Transform>();
 
+    [SerializeField] private PlayerController p_controller;
+
     private void OnCollisionEnter2D(Collision2D col)
     {
         if (!col.gameObject.CompareTag("Box")) return;
@@ -20,7 +22,7 @@ public class PlayerHandle : MonoBehaviour
     {
         if (!col.gameObject.CompareTag("Box")) return;
 
-        if(boxesTransform.Count == 0) return;
+        if (boxesTransform.Count == 0) return;
 
         Transform min = boxesTransform[0];
 
@@ -36,15 +38,14 @@ public class PlayerHandle : MonoBehaviour
             }
         }
 
-        if(GetComponent<PlayerController>() != null)
+        if (p_controller.powerUpsReceived.Contains(PowerUpType.SIZE))
         {
-            if(GetComponent<PlayerController>().powerUpsReceived.Contains(PowerUpType.SIZE)) {
-                if(min.GetComponent<BoxRaw>() != null)
-                {
-                    min.GetComponent<BoxRaw>().Break();
-                    boxesTransform.Clear();
-                    return;
-                }
+            BoxRaw boxRaw = min.GetComponent<BoxRaw>();
+            if (boxRaw != null)
+            {
+                boxRaw.Break();
+                boxesTransform.Clear();
+                return;
             }
         }
         min.GetComponent<BoxBase>().Respond();

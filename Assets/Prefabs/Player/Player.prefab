@@ -162,6 +162,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 311610af43695b840b4781a4224d81bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  p_controller: {fileID: 2148842256907033902}
 --- !u!114 &2148842256907033902
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -179,6 +180,7 @@ MonoBehaviour:
   groundCheck: {fileID: 6222601291560120605}
   box: {fileID: 858837387070060795}
   animationPlayer: {fileID: 1938742881760944251}
+  spriteRenderer: {fileID: 4979522498931206421}
 --- !u!1 &5603869454349501284
 GameObject:
   m_ObjectHideFlags: 0

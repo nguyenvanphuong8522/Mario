@@ -9,7 +9,7 @@ public class PowerUpCoin : PowerUpBase
         ApplyPowerUp();
         Destroy(gameObject, 1);
     }
-    protected override void ApplyPowerUp()
+    public override void ApplyPowerUp()
     {
         GameManager.instance.UpdateCoinPlayer(1);
         AudioManager.instance.Play(AudioManager.instance.listClip[0]);

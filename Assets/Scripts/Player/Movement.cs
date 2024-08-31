@@ -88,7 +88,9 @@ public class Movement : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D col)
     {
-        if (col.GetContact(0).normal == Vector2.down) 
+        if (col.GetContact(0).normal == Vector2.down)
+        {
             input.canJump = false;
+        }
     }
 }

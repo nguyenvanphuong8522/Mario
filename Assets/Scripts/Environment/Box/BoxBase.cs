@@ -8,7 +8,7 @@ public abstract class BoxBase: MonoBehaviour
 
     protected virtual void OnCollisionEnter2D(Collision2D col)
     {
-        if (col.gameObject.CompareTag("Player") && col.transform.position.y > transform.position.y)
+        if ((col.gameObject.CompareTag("Player") || col.gameObject.CompareTag("Bullet")) && col.transform.position.y > transform.position.y)
         {
             if (GetComponentInParent<CompositeCollider2D>() == null)
             {
@@ -25,7 +25,7 @@ public abstract class BoxBase: MonoBehaviour
         {
             if (col.gameObject.CompareTag("Enemy"))
             {
-                col.GetComponent<EnemyController>().DieFall();
+                col.GetComponent<EnemyHealth>().DieFall();
             }
         }
     }

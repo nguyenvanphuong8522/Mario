@@ -12,6 +12,8 @@ public enum PlayerState
     DIE
 }
 
+
+
 public class PlayerController : MonoBehaviour
 {
     public event Action<PlayerState> OnStateChange = delegate { };
@@ -30,6 +32,8 @@ public class PlayerController : MonoBehaviour
     public HashSet<PowerUpType> powerUpsReceived = new HashSet<PowerUpType>();
 
     public AnimationPlayer animationPlayer;
+
+    public SpriteRenderer spriteRenderer;
 
     private void Awake()
     {
@@ -56,15 +60,7 @@ public class PlayerController : MonoBehaviour
     }
     void Update()
     {
-
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            SizeUp();
-        }
-        if(Input.GetKeyDown(KeyCode.Z))
-        {
-            SizeDown();
-        }
+        if (Input.GetKeyDown(KeyCode.Z)) Shooting();
 
         if (state == PlayerState.DIE || state == PlayerState.FREEZE) return;
         if (!groundCheck.IsGrounded)
@@ -141,5 +137,19 @@ public class PlayerController : MonoBehaviour
         movement.rb.simulated = true;
         ChangeState(PlayerState.IDLE);
     }
+
+    public void Shooting()
+    {
+        Vector2 direct = new Vector2(0.5f, -0.5f);
+        Vector3 pointShoot = new Vector3(transform.position.x + .7f, transform.position.y, 0);
+        if (spriteRenderer.flipX)
+        {
+            direct = new Vector2(-0.5f, -0.5f);
+            pointShoot = new Vector3(transform.position.x - .7f, transform.position.y, 0);
+        }
+
+        PowerUpSpawner.instance.SpawnBullet(direct, pointShoot);
+    }
+
 
 }
