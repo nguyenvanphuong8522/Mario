@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Movement : MonoBehaviour
+public class Movement : MonoBehaviour, IMovable
 {
     private InputPlayer input;
 
@@ -18,11 +18,14 @@ public class Movement : MonoBehaviour
 
     private Coroutine coroutineSetDie;
 
+    public Vector2 Direction { get; set; }
+
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
         input = GetComponent<InputPlayer>();
         p_controller = GetComponent<PlayerController>();
+        Direction = Vector2.zero;
     }
 
     void Update()
@@ -53,7 +56,8 @@ public class Movement : MonoBehaviour
 
     private void Move()
     {
-        rb.velocity = new Vector2(input.Horizontal * data.speedMove, rb.velocity.y);
+        Direction = new Vector2(input.Horizontal * data.speedMove, rb.velocity.y);
+        rb.velocity = Direction;
     }
     private void Jump()
     {

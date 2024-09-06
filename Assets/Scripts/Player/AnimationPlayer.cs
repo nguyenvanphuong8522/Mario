@@ -27,15 +27,15 @@ public class AnimationPlayer : MonoBehaviour
         p_Controller.OnStateChange -= ChangeState;
     }
 
-    public void Play(string name)
+    public void Play(string name, int layer = -1)
     {
         if (curAnimation != name)
         {
-            animator.Play(name);
+            animator.Play(name, layer);
         }
     }
 
-    public void SetLayer(int value)
+    public void SetWeightLayerSecond(int value)
     {
         animator.SetLayerWeight(1, value);
     }

@@ -38,6 +38,7 @@ public class PlayerController : MonoBehaviour
     private void Awake()
     {
         movement = GetComponent<Movement>();
+        //powerUpsReceived.Add(PowerUpType.INVINCIBLE);
     }
 
     private void OnEnable()
@@ -45,6 +46,7 @@ public class PlayerController : MonoBehaviour
         state = PlayerState.IDLE;
         input.EnableControl();
         ChangeState(state);
+        
     }
 
     public void ChangeState(PlayerState state)
@@ -61,6 +63,7 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Z)) Shooting();
+        if (Input.GetKeyDown(KeyCode.X)) StartCoroutine(DelayDiableInvincible());
 
         if (state == PlayerState.DIE || state == PlayerState.FREEZE) return;
         if (!groundCheck.IsGrounded)
@@ -78,6 +81,11 @@ public class PlayerController : MonoBehaviour
         ChangeState(PlayerState.RUN);
     }
 
+    public void ActiveInvincible()
+    {
+        StartCoroutine(DelayDiableInvincible());
+    }
+
     public void IncreaseCoin(int value)
     {
         coin += value;
@@ -92,7 +100,7 @@ public class PlayerController : MonoBehaviour
         Vector3 curPos = transform.position;
         curPos.y += box.size.y / 2;
         transform.position = curPos;
-        powerUpsReceived.Add(PowerUpType.SIZE);
+        AddPowerUp(PowerUpType.SIZE);
         ChangeState(PlayerState.FREEZE);
         animationPlayer.Play("sizeUp");
         StartCoroutine(DelayFreeze());
@@ -106,9 +114,9 @@ public class PlayerController : MonoBehaviour
         Vector3 curPos = transform.position;
         curPos.y -= box.size.y / 2;
         transform.position = curPos;
-        powerUpsReceived.Remove(PowerUpType.SIZE);
+        RemovePowerUp(PowerUpType.SIZE);
         ChangeState(PlayerState.FREEZE);
-        animationPlayer.SetLayer(1);
+        animationPlayer.SetWeightLayerSecond(1);
         StartCoroutine(DelayFreeze());
         StartCoroutine(DelayUnFlicker());
     }
@@ -122,7 +130,7 @@ public class PlayerController : MonoBehaviour
     private IEnumerator DelayUnFlicker()
     {
         yield return new WaitForSeconds(2f);
-        animationPlayer.SetLayer(0);
+        animationPlayer.SetWeightLayerSecond(0);
     }
 
     private void Freeze()
@@ -140,6 +148,7 @@ public class PlayerController : MonoBehaviour
 
     public void Shooting()
     {
+        AudioManager.instance.Play(AudioManager.instance.listClip[7]);
         Vector2 direct = new Vector2(0.5f, -0.5f);
         Vector3 pointShoot = new Vector3(transform.position.x + .7f, transform.position.y, 0);
         if (spriteRenderer.flipX)
@@ -151,5 +160,34 @@ public class PlayerController : MonoBehaviour
         PowerUpSpawner.instance.SpawnBullet(direct, pointShoot);
     }
 
+    public bool IsInvincible()
+    {
+        return powerUpsReceived.Contains(PowerUpType.INVINCIBLE);
+    }
 
+    public bool IsBigSized()
+    {
+        return powerUpsReceived.Contains(PowerUpType.SIZE);
+    }
+
+    private IEnumerator DelayDiableInvincible()
+    {
+        AddPowerUp(PowerUpType.INVINCIBLE);
+        animationPlayer.Play("Invincible", 1);
+        animationPlayer.SetWeightLayerSecond(1);
+        yield return new WaitForSeconds(10);
+        animationPlayer.SetWeightLayerSecond(0);
+        RemovePowerUp(PowerUpType.INVINCIBLE);
+
+    }
+    private void AddPowerUp(PowerUpType newPowerUp)
+    {
+        if (powerUpsReceived.Contains(newPowerUp)) return;
+        powerUpsReceived.Add(newPowerUp);
+    }
+    private void RemovePowerUp(PowerUpType newPowerUp)
+    {
+        if (!powerUpsReceived.Contains(newPowerUp)) return;
+        powerUpsReceived.Remove(newPowerUp);
+    }
 }

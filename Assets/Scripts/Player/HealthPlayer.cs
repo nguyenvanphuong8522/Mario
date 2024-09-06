@@ -18,6 +18,7 @@ public class HealthPlayer : MonoBehaviour
         health--;
         if (health <= 0)
         {
+
             if (p_controller.powerUpsReceived.Contains(PowerUpType.SIZE))
             {
                 p_controller.SizeDown();
@@ -42,6 +43,9 @@ public class HealthPlayer : MonoBehaviour
                     break;
                 case PowerUpType.SHOOT:
                     break;
+                case PowerUpType.INVINCIBLE:
+                    p_controller.ActiveInvincible();
+                    break;
                 default:
                     break;
             }
@@ -54,6 +58,12 @@ public class HealthPlayer : MonoBehaviour
     {
         if (col.gameObject.CompareTag("Enemy"))
         {
+            if (p_controller.IsInvincible() && col.GetContact(0).normal != Vector2.up)
+            {
+                col.gameObject.GetComponent<EnemyHealth>().DieFall();
+                return;
+            }
+
             if (col.GetContact(0).normal != Vector2.up)
                 TakeDame();
         }

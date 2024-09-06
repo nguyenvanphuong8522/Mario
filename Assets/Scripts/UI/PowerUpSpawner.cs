@@ -6,7 +6,8 @@ public enum PowerUpType
 {
     COIN,
     SIZE,
-    SHOOT
+    SHOOT,
+    INVINCIBLE
 }
 
 public class PowerUpSpawner : MonoBehaviour
@@ -37,6 +38,9 @@ public class PowerUpSpawner : MonoBehaviour
                 break;
             case PowerUpType.SHOOT:
                 index = 2;
+                break;
+            case PowerUpType.INVINCIBLE:
+                index = 3;
                 break;
             default:
                 break;

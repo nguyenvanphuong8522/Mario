@@ -4,34 +4,35 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))]
-public class EnemyMovement : MonoBehaviour
+public class EnemyMovement : MonoBehaviour, IMovable
 {
     internal Rigidbody2D rb;
 
-    private Vector2 direction;
+    public Vector2 Direction { get; set; }
 
-    [SerializeField] private float speed;
+    [SerializeField] protected float speed;
 
-    private void Awake()
+
+    protected virtual void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
     }
 
-    private void Start()
+    protected virtual void Start()
     {
-        direction = Vector2.right;
+        Direction = Vector2.right;
     }
 
-    private void FixedUpdate()
+    protected virtual void FixedUpdate()
     {
         Move();
     }
-    private void Move()
+    protected virtual void Move()
     {
-        rb.velocity = new Vector2(direction.x * speed, rb.velocity.y);
+        rb.velocity = new Vector2(Direction.x * speed, rb.velocity.y);
     }
 
-    private void OnTriggerEnter2D(Collider2D col)
+    protected virtual void OnTriggerEnter2D(Collider2D col)
     {
         if (col.CompareTag("Swap") || col.CompareTag("Ground"))
         {
@@ -39,9 +40,9 @@ public class EnemyMovement : MonoBehaviour
         }
     }
 
-    private void ChangeDirection()
+    protected virtual void ChangeDirection()
     {
-        direction *= -1;
+        Direction *= -1;
     }
 
     public void SetSpeed(float speed)

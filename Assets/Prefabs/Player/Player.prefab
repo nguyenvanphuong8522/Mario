@@ -138,6 +138,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   groundCheck: {fileID: 6222601291560120605}
   data: {fileID: 11400000, guid: 8f28014571bb33f4aacfa4ec49adda02, type: 2}
+  Direction: {x: 0, y: 0}
 --- !u!114 &4914048000596033679
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -391,7 +392,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a127101968054b43828dd4e46d2c267, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rbPlayer: {fileID: 7495134955246382280}
+  movement: {fileID: 1359634382391524987}
   spriteRenderer: {fileID: 4979522498931206421}
 --- !u!114 &1938742881760944251
 MonoBehaviour:

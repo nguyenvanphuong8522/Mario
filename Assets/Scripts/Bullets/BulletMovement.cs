@@ -6,14 +6,22 @@ public class BulletMovement : MonoBehaviour
 {
     private Rigidbody2D _rb;
     [SerializeField] private float _force;
-    [SerializeField] private Vector2 _directBounce;
-    public Vector2 Direction { set; get; }
+    private Vector2 _directBounce = Vector2.one;
+    public Vector2 Direction;
+        
 
     private float speed = 40;
+
+    [SerializeField] private GameObject _prefabExplore;
     private void Awake()
     {
         _rb = GetComponent<Rigidbody2D>();
 
+    }
+
+    private void SpawnEffectExplore()
+    {
+        Instantiate(_prefabExplore, transform.position, Quaternion.identity);
     }
 
     public void Movement()
@@ -28,19 +36,19 @@ public class BulletMovement : MonoBehaviour
             AddForceBouce();
             return;
         }
+        SpawnEffectExplore();
         Destroy(gameObject);
     }
 
     public void AddForceBouce()
     {
         _rb.velocity = Vector2.zero;
-        if (Direction == new Vector2(-0.5f, -0.5f))
+        if (Direction.x < 0)
         {
-            _directBounce = new Vector2(-_directBounce.x, _directBounce.y);
-            Direction = new Vector2(0.5f, -0.5f);
+            _directBounce.x *= -1;
+            Direction.x = 0.5f;
         }
         _rb.AddForce(_directBounce.normalized * _force);
-
     }
 }
 

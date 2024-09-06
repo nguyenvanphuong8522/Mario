@@ -5,16 +5,21 @@ using UnityEngine.U2D;
 
 public class FlipFace : MonoBehaviour
 {
-    [SerializeField] private Rigidbody2D rbPlayer;
+    [SerializeField] private IMovable movement;
 
     [SerializeField] private SpriteRenderer spriteRenderer;
+
+    private void Awake()
+    {
+        movement = GetComponentInParent<IMovable>();
+    }
     void Update()
     {
         Flip();
     }
     public void Flip()
     {
-        float hor = rbPlayer.velocity.x;
+        float hor = movement.Direction.x;
         if (hor != 0)
         {
             if(hor <= 0)

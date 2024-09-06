@@ -64,5 +64,7 @@ MonoBehaviour:
   powerUps:
   - {fileID: -9095013505042431512, guid: 7138144a7b77b7147b66f70ed01e0aa2, type: 3}
   - {fileID: -6746584078966369668, guid: 04e41c76303cc134fac90fe6d19707e0, type: 3}
+  - {fileID: 8221201345939881713, guid: 889cb7f0b00af0c4baf3b1879c00507a, type: 3}
+  - {fileID: 8221201345939881713, guid: 889cb7f0b00af0c4baf3b1879c00507a, type: 3}
   breakEffect: {fileID: 8294296220784985141, guid: d81a5a6551e23a648bc8da93c1f00748, type: 3}
   bullet: {fileID: 1352309105829369274, guid: 244be7dceaadbe14faa0ac849faa8afd, type: 3}
