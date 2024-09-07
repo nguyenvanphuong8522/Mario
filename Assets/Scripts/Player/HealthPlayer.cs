@@ -6,11 +6,14 @@ using UnityEngine.Assertions.Must;
 public class HealthPlayer : MonoBehaviour
 {
     private PlayerController p_controller;
+
+    private Movement movement;
     public int health { get; set; }
 
     private void Awake()
     {
         p_controller = GetComponent<PlayerController>();
+        movement = GetComponent<Movement>();
     }
 
     public void TakeDame()
@@ -18,14 +21,15 @@ public class HealthPlayer : MonoBehaviour
         health--;
         if (health <= 0)
         {
-
             if (p_controller.powerUpsReceived.Contains(PowerUpType.SIZE))
             {
                 p_controller.SizeDown();
                 return;
             }
             if (p_controller.animationPlayer.GetWeight() <= 0)
+            {
                 p_controller.ChangeState(PlayerState.DIE);
+            }
         }
     }
 
@@ -58,17 +62,13 @@ public class HealthPlayer : MonoBehaviour
     {
         if (col.gameObject.CompareTag("Enemy"))
         {
-            if (p_controller.IsInvincible() && col.GetContact(0).normal != Vector2.up)
+            if (col.GetContact(0).normal != Vector2.up)
             {
-                col.gameObject.GetComponent<EnemyHealth>().DieFall();
+                TakeDame();
                 return;
             }
 
-            if (col.GetContact(0).normal != Vector2.up)
-                TakeDame();
+            movement.rb.AddForce(Vector2.up * 12, ForceMode2D.Impulse);
         }
-
     }
-
-
 }

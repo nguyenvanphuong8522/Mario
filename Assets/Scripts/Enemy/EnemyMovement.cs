@@ -49,4 +49,9 @@ public class EnemyMovement : MonoBehaviour, IMovable
     {
         this.speed = speed;
     }
+
+    public void ResetVelocity()
+    {
+        rb.velocity = Vector2.zero;
+    }
 }

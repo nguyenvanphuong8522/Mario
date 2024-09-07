@@ -6,61 +6,61 @@ using UnityEngine;
 
 public class EnemyHealth : MonoBehaviour
 {
-    [SerializeField] private Rigidbody2D rb;
+    protected Rigidbody2D rb;
 
-    public EnemyController e_controller;
+    private EnemyController e_controller;
 
-    private void OnCollisionEnter2D(Collision2D col)
+    protected virtual void Awake()
+    {
+        rb = GetComponent<Rigidbody2D>();
+        e_controller = GetComponent<EnemyController>();
+    }
+
+    protected virtual void OnCollisionEnter2D(Collision2D col)
     {
         if (col.gameObject.CompareTag("Player"))
         {
-            Vector2 direct = col.GetContact(0).normal;
-            if (direct == Vector2.down)
+            Vector2 normal = col.GetContact(0).normal;
+            if (normal == Vector2.down)
             {
-                col.gameObject.GetComponent<Rigidbody2D>().AddForce(Vector2.up * 12, ForceMode2D.Impulse);
-                Die();
+                Die(0.8f);
+                return;
+            }
+
+            if (col.gameObject.GetComponent<PlayerController>().IsInvincible())
+            {
+                Die(0.8f,true, EnemyState.diefall);
             }
         }
         else if (col.gameObject.CompareTag("Bullet"))
         {
-            DieFall();
+            Die(0.8f,true, EnemyState.diefall);
         }
     }
 
-    internal void DieFall()
+    public void Die(float duration, bool simulate = false, EnemyState state = EnemyState.die)
     {
-        StartCoroutine(DelyDieFall());
-    }
-    internal void Die()
-    {
-        StartCoroutine(DelayDie());
+        StartCoroutine(DelayDie(state, simulate, duration));
     }
 
-    public IEnumerator DelyDieFall()
+    protected virtual IEnumerator DelayDie(EnemyState state, bool simulate, float duration)
     {
-        rb.AddForce(Vector2.up * 60, ForceMode2D.Impulse);
-        e_controller.ChangeState(EnemyState.diefall);
+        rb.simulated = simulate;
+        e_controller.ChangeState(state);
         ChangeValueDie();
-
-        yield return new WaitForSeconds(.8f);
+        yield return new WaitForSeconds(duration);
         Destroy(gameObject);
     }
 
-    private IEnumerator DelayDie()
-    {
-        rb.simulated = false;
-        e_controller.ChangeState(EnemyState.die);
-        ChangeValueDie();
-
-        yield return new WaitForSeconds(.8f);
-        Destroy(gameObject);
-    }
-
-    private void ChangeValueDie()
+    protected void ChangeValueDie()
     {
         AudioManager.instance.Play(AudioManager.instance.listClip[3]);
+        ChangeLayerDead();
+    }
+
+    protected void ChangeLayerDead()
+    {
         int layerDead = LayerMask.NameToLayer("Dead");
         gameObject.layer = layerDead;
-        rb.velocity = Vector2.zero;
     }
 }

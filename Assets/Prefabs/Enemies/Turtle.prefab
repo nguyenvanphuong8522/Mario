@@ -22,7 +22,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1897334512635503549, guid: fb4f6e2661666d043b74d82b75c6da83, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.001
+      value: -0.13
       objectReference: {fileID: 0}
     - target: {fileID: 1897334512635503549, guid: fb4f6e2661666d043b74d82b75c6da83, type: 3}
       propertyPath: m_ConstrainProportionsScale
@@ -46,11 +46,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6316371457790744126, guid: fb4f6e2661666d043b74d82b75c6da83, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 9.560079
       objectReference: {fileID: 0}
     - target: {fileID: 6316371457790744126, guid: fb4f6e2661666d043b74d82b75c6da83, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -2.41
       objectReference: {fileID: 0}
     - target: {fileID: 6316371457790744126, guid: fb4f6e2661666d043b74d82b75c6da83, type: 3}
       propertyPath: m_LocalPosition.z
@@ -62,15 +62,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6316371457790744126, guid: fb4f6e2661666d043b74d82b75c6da83, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 6316371457790744126, guid: fb4f6e2661666d043b74d82b75c6da83, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 6316371457790744126, guid: fb4f6e2661666d043b74d82b75c6da83, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 6316371457790744126, guid: fb4f6e2661666d043b74d82b75c6da83, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -135,13 +135,13 @@ PrefabInstance:
       addedObject: {fileID: 6962781461586213913}
     - targetCorrespondingSourceObject: {fileID: 6115901573570077040, guid: fb4f6e2661666d043b74d82b75c6da83, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1255342489959706923}
+      addedObject: {fileID: 2200645172141518435}
     - targetCorrespondingSourceObject: {fileID: 6115901573570077040, guid: fb4f6e2661666d043b74d82b75c6da83, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1934062023644225494}
+      addedObject: {fileID: 3725724560617158421}
     - targetCorrespondingSourceObject: {fileID: 6115901573570077040, guid: fb4f6e2661666d043b74d82b75c6da83, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 7837898889649014770}
+      addedObject: {fileID: 3297081252191812544}
     - targetCorrespondingSourceObject: {fileID: 5178155339186063218, guid: fb4f6e2661666d043b74d82b75c6da83, type: 3}
       insertIndex: -1
       addedObject: {fileID: 7446817427999656807}
@@ -150,7 +150,7 @@ PrefabInstance:
       addedObject: {fileID: 3920683839816628620}
     - targetCorrespondingSourceObject: {fileID: 5178155339186063218, guid: fb4f6e2661666d043b74d82b75c6da83, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 2159120497081094199}
+      addedObject: {fileID: 7716114036246072556}
   m_SourcePrefab: {fileID: 100100000, guid: fb4f6e2661666d043b74d82b75c6da83, type: 3}
 --- !u!1 &968028966057744824 stripped
 GameObject:
@@ -167,7 +167,7 @@ Animator:
   m_GameObject: {fileID: 968028966057744824}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 500d7547e27f7304a9a2f2202afeb341, type: 2}
+  m_Controller: {fileID: 9100000, guid: dfc36433a5c5c514c87d8d6f25376eae, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -190,9 +190,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a127101968054b43828dd4e46d2c267, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rbPlayer: {fileID: 5138509737244309521}
   spriteRenderer: {fileID: 2625670590073972005}
---- !u!114 &2159120497081094199
+--- !u!114 &7716114036246072556
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -361,7 +360,36 @@ CircleCollider2D:
   m_Offset: {x: 0, y: -0.1404087}
   serializedVersion: 2
   m_Radius: 0.26959127
---- !u!114 &1255342489959706923
+--- !u!114 &2200645172141518435
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2185281543461076922}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b51d9e20fa2bfbb4f80d088722a161b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  curState: 0
+  isInShell: 0
+  e_movement: {fileID: 3297081252191812544}
+  e_Animation: {fileID: 7716114036246072556}
+--- !u!114 &3725724560617158421
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2185281543461076922}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be6cbcdf60436e24f9f18046ac94cd0d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  controller: {fileID: 2200645172141518435}
+--- !u!114 &3297081252191812544
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -374,34 +402,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 1.5
---- !u!114 &1934062023644225494
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2185281543461076922}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0243ad50b94d33b418d8355cc37f755a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  rb: {fileID: 5138509737244309521}
-  e_controller: {fileID: 7837898889649014770}
---- !u!114 &7837898889649014770
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2185281543461076922}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b0a08c406af95754d89a7db0cf7acdaf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  e_movement: {fileID: 1255342489959706923}
-  e_Animation: {fileID: 2159120497081094199}
 --- !u!212 &2625670590073972005 stripped
 SpriteRenderer:
   m_CorrespondingSourceObject: {fileID: 7981469883162426351, guid: fb4f6e2661666d043b74d82b75c6da83, type: 3}

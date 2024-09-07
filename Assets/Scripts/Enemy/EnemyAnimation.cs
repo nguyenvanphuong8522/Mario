@@ -13,7 +13,7 @@ public class EnemyAnimation : MonoBehaviour
         animator = GetComponent<Animator>();
     }
 
-    public void Play(EnemyState state)
+    public void Play(string state)
     {
         if (curAnimation != state.ToString())
         {
