@@ -9,7 +9,9 @@ public class UiManager : MonoBehaviour
     public PanelStarted panelStarted;
 
     [SerializeField] private BasePopup panelGameOver;
-    [SerializeField] private BasePopup panelMenu;
+    public BasePopup panelMenu;
+
+    public BasePopup panelSelectLevel;
 
     private void OnEnable()
     {

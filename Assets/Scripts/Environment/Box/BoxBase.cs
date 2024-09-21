@@ -8,12 +8,25 @@ public abstract class BoxBase: MonoBehaviour
 
     protected virtual void OnCollisionEnter2D(Collision2D col)
     {
-        if ((col.gameObject.CompareTag("Player") || col.gameObject.CompareTag("Bullet")) && col.transform.position.y > transform.position.y)
+        if ((col.gameObject.CompareTag("Player") || col.gameObject.CompareTag("Bullet")))
         {
-            if (GetComponentInParent<CompositeCollider2D>() == null)
+            if(col.GetContact(0).normal == Vector2.down)
+            if (transform.parent.GetComponent<CompositeCollider2D>() == null)
             {
                 transform.parent.AddComponent<CompositeCollider2D>();
                 transform.parent.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Static;
+            }
+        }
+    }
+
+    private void OnCollisionExit2D(Collision2D col)
+    {
+        if ((col.gameObject.CompareTag("Player") || col.gameObject.CompareTag("Bullet")))
+        {
+            if (transform.parent.GetComponent<CompositeCollider2D>() != null)
+            {
+                Destroy(transform.parent.GetComponent<CompositeCollider2D>());
+                Destroy(transform.parent.GetComponent<Rigidbody2D>());
             }
         }
     }

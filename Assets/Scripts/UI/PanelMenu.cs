@@ -1,16 +1,19 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PanelMenu : BasePopup
 {
-    public override void Hide()
+    [SerializeField] private Button btnPlay;
+
+    protected override void Awake()
     {
-        Play();
-        base.Hide();
+        base.Awake();
+        btnPlay.onClick.AddListener(OnPlay);
     }
-    private void Play()
+    private void OnPlay()
     {
-        GameManager.instance.levelManager.SpawnLevel(0);
+        UiManager.instance.panelSelectLevel.Show();
     }
 }

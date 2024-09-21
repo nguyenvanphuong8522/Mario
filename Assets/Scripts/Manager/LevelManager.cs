@@ -10,7 +10,10 @@ public class LevelManager : MonoBehaviour
     public GameObject curLevel;
     public void SpawnLevel(int index)
     {
+        if(player == null)
         player = Instantiate(playerPrefab);
+
+
         Camera.main.GetComponent<CameraFollow>().transform.position = new Vector3(0, 0, -10);
         Camera.main.GetComponent<CameraFollow>().SetUp(player);
         Destroy(curLevel);

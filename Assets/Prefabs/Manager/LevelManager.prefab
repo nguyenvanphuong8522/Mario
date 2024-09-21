@@ -47,6 +47,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   levels:
   - {fileID: 8337711460625483764, guid: f15e5698823b37e4a9f9f15e7123f6a8, type: 3}
+  - {fileID: 8337711460625483764, guid: ca0182ec7c2836644941d3ce34ba129d, type: 3}
   playerPrefab: {fileID: 2148842256907033902, guid: 4c655cecd0e3876478831334b7d87c8b, type: 3}
   curLevel: {fileID: 0}
 --- !u!114 &7175794595107056080
