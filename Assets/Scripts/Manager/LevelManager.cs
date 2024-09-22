@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class LevelManager : MonoBehaviour
 {
-    public List<GameObject> levels;
+    public List<Level> levels;
     public PlayerController playerPrefab;
     internal PlayerController player;
-    public GameObject curLevel;
+    public Level curLevel;
     public void SpawnLevel(int index)
     {
         if(player == null)
@@ -16,7 +16,7 @@ public class LevelManager : MonoBehaviour
 
         Camera.main.GetComponent<CameraFollow>().transform.position = new Vector3(0, 0, -10);
         Camera.main.GetComponent<CameraFollow>().SetUp(player);
-        Destroy(curLevel);
+        //Destroy(curLevel);
         curLevel = Instantiate(levels[index]);
         GameManager.instance.ChangeState(GameState.STARTED);
     }
